@@ -1,0 +1,34 @@
+<div class="d-flex w-100 h-100 flex-column chat">
+  <div #scrollChat class="chat-room">
+    <ul>
+      <li *ngFor="let message of messages">
+        <app-message [content]="message"></app-message>
+      </li>
+    </ul>
+  </div>
+  <div class="chat-board">
+    <form
+      class="d-flex h-100 align-items-center chat-form"
+      [formGroup]="chatForm"
+      (ngSubmit)="submit()"
+    >
+      <button
+        class="d-flex justify-content-center align-items-center chat-form-gif"
+        type="button"
+        (click)="openGifModal()"
+      >
+        GIF
+      </button>
+      <input
+        type="text"
+        id="chatFormInput"
+        name="chatFormInput"
+        class="h-100 chat-form-input"
+        formControlName="input"
+      />
+      <button class="chat-form-btn" type="button" (click)="submit()">
+        <mat-icon aria-hidden="false" aria-label="send icon">send</mat-icon>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<mat-dialog-content class="gif-container">
+  <div class="d-flex flex-column gif-modal">
+    <form class="gif-search" [formGroup]="searchForm">
+      <mat-form-field class="w-100">
+        <input
+          matInput
+          placeholder=""
+          class="gif-search-input"
+          formControlName="searchInput"
+        />
+      </mat-form-field>
+    </form>
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="row gif-images" *ngIf="!isLoading">
+      <div
+        class="col-md-3 col-sm-4 col-6 gif-image"
+        *ngFor="let image of images"
+      >
+        <img
+          class="w-100 h-100"
+          [src]="image.images.preview_gif.url"
+          (click)="selectImg(image)"
+        />
+      </div>
+    </div>
+    <button *ngIf="!isLoading" class="btn btn-primary" (click)="readMore()">Read More</button>
+  </div>
+</mat-dialog-content>

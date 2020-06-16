@@ -1,0 +1,5 @@
+<div class="message" [ngClass]="getPosition(content)">
+  <p *ngIf="content.type === 'text'">{{content.message}}</p>
+  <img *ngIf="content.type === 'gif'" [src]="content.message" >
+</div>
+
